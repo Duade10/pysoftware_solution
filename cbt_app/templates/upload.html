@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2>Upload Questions from PDF</h2>
+
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="pdf_file">Select PDF File</label>
+                {{ form.pdf_file }}
+                {% for error in form.pdf_file.errors %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+
+            <button type="submit" class="btn btn-block btn-primary">Upload</button>
+        </form>
+
+        <div class="mt-3">
+            <a href="{% url 'core:question_list' %}" class="btn btn-block btn-outline-secondary">View Questions</a>
+        </div>
+    </div>
+{% endblock content %}

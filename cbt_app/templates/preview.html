@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Preview Extracted Questions</h1>
+        <form method="post">
+            {% csrf_token %}
+            <ul>
+                {% for question in questions %}
+                    <li>
+                        <p><strong>Question:</strong> {{ question.question_main }}</p>
+                        <p><strong>A:</strong> {{ question.a }}</p>
+                        <p><strong>B:</strong> {{ question.b }}</p>
+                        <p><strong>C:</strong> {{ question.c }}</p>
+                        <p><strong>D:</strong> {{ question.d }}</p>
+                        <p><strong>E:</strong> {{ question.e }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button class="btn btn-block btn-primary" type="submit">Confirm and Save</button>
+        </form>
+    </div>
+
+{% endblock content %}

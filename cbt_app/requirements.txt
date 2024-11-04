@@ -1,0 +1,4 @@
+Django==4.2.16
+jsonschema==4.23.0
+PyPDF2==3.0.1
+requests==2.32.3
